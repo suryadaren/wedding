@@ -1,0 +1,315 @@
+/*
+    6.4. Page
+            6.4.1 Collection Detail v1
+            6.4.2 Collection Detail v2
+            6.4.3 Collection Detail v3
+            6.4.4 Collection Detail v4
+
+
+ */
+
+.collection-slider {
+    padding-bottom: 50px;
+    @media(max-width: $screen-xs) {
+        padding-bottom: 30px;
+    }
+    @media(min-width: $screen-md) {
+        padding-bottom: 120px;
+    }
+    .items {
+        position: relative;
+        z-index: 11;
+    }
+}
+
+.title {
+    color: #a3783c;
+    font-size: 20px;
+    font-family: $custom-font2;
+    text-transform: uppercase;
+    @include tracking(200);
+    margin-bottom: 15px;
+    @media(min-width: $screen-md) {
+        font-size: 36px;
+        line-height: 48px;
+    }
+    @media(max-width:$screen-xs) {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+.desc {
+    color: #636363;
+    font-size: 18px;
+    @include tracking(100);
+    @media(max-width: $screen-xs-max) {
+        font-size:14px;
+    }
+}
+
+.cate-title {
+    color: #a3783c;
+    font-size: 18px;
+    font-family: $custom-font2;
+    text-transform: uppercase;
+    @include tracking(100);
+    @media(max-width: $screen-xs) {
+        font-size: 16px;
+    }
+}
+
+
+
+.slider-inside {
+    position: relative;
+    @media(min-width: $screen-md) {
+        .slick-dotted.slick-slider {
+            margin-bottom:0;
+        }
+        .custom-ver2 {
+            position: absolute;
+            top: 59%;
+            left: -38px;
+        }
+        .custom_paging {
+            @include flex;
+            @include flex-direction(column);
+            @include align-items(center);
+            li {
+                display: block;
+                margin: 7px 0;
+                &:first-child {
+                    margin-top: 0;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+            &:before {
+                position: absolute;
+                content: "";
+                width: 173px;
+                height: 1px;
+                background: #a3783c;
+                opacity: 0.3;
+                -webkit-transition: all 0.5s ease 0s;
+                transition: all 0.5s ease 0s;
+                -o-transition: all 0.5s ease 0s;
+                top: -100px;
+                right: -79px;
+                transform: rotate(90deg);
+            }
+        }
+    }
+    .slick-slide img {
+        @media(max-width: $screen-sm-max) {
+            margin:0 auto;
+        }
+    }
+}
+
+.essential {
+    position: relative;
+    z-index: 12;
+    @media(max-width: $screen-sm-max) {
+        align-items: center;
+    }
+    @media(max-width:$screen-xs) {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    @media(min-width: $screen-xs) {
+        @include flex;
+    }
+
+    .content {
+        padding-top: 30px;
+
+        @media(min-width: $screen-md) {
+            padding-left: 70px;
+            padding-top: 124px;
+        }
+        @media(min-width:$screen-xs) {
+            margin-left: 15px;
+        }
+    }
+}
+
+.group-category-flex {
+    @media(max-width: $screen-sm-max) and (min-width:$screen-xs) {
+        @include flex;
+
+        .collection-category.v2 {
+            @include flex;
+            .category.category-bottom {
+                margin-right: 15px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        .collection-category.v1 {
+            margin-right: 15px;
+        }
+    }
+}
+
+@media(min-width:$screen-md) {
+
+
+    .category {
+        position: relative;
+    }
+    .collection-category {
+
+        &.v2 {
+            margin-bottom: 200px;
+            float: right;
+        }
+    }
+    .category-bottom {
+        display: inline-block;
+        &:first-child {
+            margin-right: 66px;
+        }
+    }
+
+    .content-text {
+        position: absolute;
+        top: -48px;
+        &.text-toleft {
+            left: 0;
+        }
+        &.text-toright {
+            right: 0;
+        }
+        &.v2 {
+
+            top: unset;
+            margin-top: 30px;
+        }
+    }
+}
+
+@media(max-width:$screen-sm-max) {
+    .collection-category {
+        text-align: center;
+    }
+    .essential.v1 {
+        margin-bottom: 50px;
+    }
+}
+
+@media(max-width:$screen-sm-max) {
+    .category {
+        margin-bottom: 30px;
+    }
+    .content-text {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .collection-category {
+        margin-top: 50px;
+    }
+}
+
+@media(max-width:$screen-xs) {
+    .collection-category {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .content-text {
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+    .essential.v1 {
+        margin-bottom: 30px;
+    }
+    .slider-inside {
+        .slick-dotted.slick-slider {
+            margin-bottom: 15px;
+        }
+    }
+    .category {
+        margin-bottom: 15px;
+    }
+}
+
+.related-collection {
+    clear: both;
+    padding-bottom: 50px;
+    @media(min-width: $screen-md) {
+        padding-bottom:150px;
+    }
+    @media(min-width: 1624px) {
+        padding-bottom: 316px;
+    }
+    @media(max-width:$screen-xs) {
+        padding-top: 30px;
+        text-align: center;
+    }
+}
+
+.collect-title {
+    color: #a3783c;
+    text-transform: uppercase;
+    font-size: 36px;
+    font-weight: 300;
+    font-family: $custom-font;
+    margin-bottom: 60px;
+    @media(max-width: $screen-xs-max) {
+        margin-bottom:30px;
+        font-size: 26px;
+    }
+}
+
+.colect-title {
+    color: #111111;
+    font-size: 30px;
+    font-family: $custom-font2;
+    text-transform: uppercase;
+    @include tracking(200);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    @media(min-width: $screen-md) {
+        font-size:48px;
+        padding-left: 70px;
+        padding-top: 40px;
+        padding-bottom: 42px;
+    }
+    @media(max-width:$screen-xs-max) {
+        font-size: 20px;
+    }
+}
+
+.colect-ovl {
+    position: relative;
+    &:before {
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fbf4e8;
+
+        @media(min-width: $screen-md) {
+            left: 300px;
+            width: 1245px;
+        }
+    }
+    &.ver2 {
+        z-index: 10;
+        &:before {
+
+            @media(min-width: $screen-md) {
+                left: -700px;
+                width: 1000px;
+                height: 1000px;
+            }
+        }
+    }
+}

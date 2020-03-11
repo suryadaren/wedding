@@ -1,0 +1,71 @@
+/*
+    2. Reset
+      2.1. Reset
+
+ */
+
+html,
+body,
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $base-font-family;
+    color: $base-font-color;
+    font-size: $base-font-size;
+}
+
+a {
+    color: #322e26;
+}
+
+a:hover,
+a:focus {
+    color: $color-hover;
+    text-decoration: none;
+    outline: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    display: inline;
+    max-width: 100%;
+}
+
+input[type="text"],
+textarea,
+button,
+select {
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+}
+
+button {
+    border: none;
+    box-shadow: none;
+}
+
+* {
+    outline: none;
+}
+
+body {
+    overflow-x: hidden;
+    position: relative;
+    right: 0;
+}

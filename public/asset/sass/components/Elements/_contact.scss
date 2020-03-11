@@ -1,0 +1,124 @@
+/*
+	4.5.contact
+ */
+.v-heading{
+	color:#322e26;
+	font-size:48px;
+	font-family:$custom-font2;
+	font-weight:bold;
+	margin-bottom: 42px;
+	&.v2{
+		font-size:24px;
+		margin-bottom: 35px;
+	}
+}
+.contact-right{
+	padding-top:30px;
+	@media(min-width:$screen-md){
+		padding-top:190px;
+		padding-left: 85px;
+	}
+	
+}
+.contact-intro{
+	@media(min-width:$screen-md){
+		margin-bottom:82px;
+	}
+	margin-bottom:30px;
+	p{
+		position:relative;
+		font-size: 16px;
+		@media(min-width:$screen-md){
+			font-size:20px;
+			line-height:30px;
+		}
+		&:after{
+			content: "";
+		    background: url(../img/others/other-quote.png) no-repeat center;
+		    margin-left: auto;
+		    margin-right: auto;
+		    left: 0;
+		    right: 0;
+		    top: -120px;
+		    top: -30px;
+		    position: absolute;
+		    width: 170px;
+		    height: 218px;
+		    z-index: 1;
+		    @media(min-width:$screen-md){
+			    right: 93px;
+			    top: -120px;
+		    }
+		}
+	}
+}
+.contact-connect{
+	padding-top:38px;
+	@media(max-width:$screen-xs-max){
+		text-align:center;
+	}
+	.email{
+		font-size:30px;
+		font-family:$custom-font2;
+		font-weight:bold;
+		position:relative;
+		display:inline-block;
+		margin-bottom:20px;
+		&:before{
+			@include line-left(290px, #8b8984);
+			border-bottom: 2px solid #8b8984;
+    		bottom: 6px;
+		}
+	}
+	.c-address{
+		font-size:18px;
+		margin-bottom:2px;
+	}
+	.phone{
+		font-size:36px;
+	}
+}
+.v-color2{
+	color:#a7a194;
+}
+.contact-form.login{
+	&.checkout-page{
+		padding:0;
+	}
+	.login-form{
+		margin-top:0;
+	}
+	.btn-vsend{
+		color:#a7a194;
+		display:inline-block;
+		text-transform:uppercase;
+		float:right;
+		clear:both;
+		padding-right: 34px;
+		border-bottom: 1px solid #a7a194;
+	    padding-left: 0;
+	    padding-top: 15px;
+	    padding-bottom: 10px;
+	    cursor:pointer;
+	    background: #fff;
+	}
+}
+.contact{
+	padding:50px 0;
+	@media(min-width:$screen-md){
+		padding-top:100px;
+		padding-bottom:200px;
+	}
+	.row{
+		@media(min-width:$screen-sm){
+			@include flex;
+			@include align-items(center);
+		}
+	}
+}
+.map{
+	@media(min-width:$screen-md){
+		height:740px;
+	}
+	height:400px;
+}

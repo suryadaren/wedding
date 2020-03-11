@@ -1,0 +1,15 @@
+/*
+    4.1.Banner
+ */
+.banner {
+    &.v2 {
+
+        padding-bottom: 50px;
+        
+        @media(min-width:1500px) {
+            
+
+            padding-bottom: 70px;
+        }
+    }
+}

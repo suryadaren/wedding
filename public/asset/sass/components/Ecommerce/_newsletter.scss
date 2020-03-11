@@ -1,0 +1,57 @@
+/*
+	5.4. Newsletter 
+ */
+
+.newsletter {
+    padding: 33px 40px 42px 40px;
+    border: 1px solid #a7a194;
+    @media(min-width: $screen-md) {
+        padding: 25px;
+    }
+    @media(min-width:1500px) {
+        padding: 33px 40px 42px 40px;
+    }
+    @media(max-width:$screen-sm-max) {
+        margin-top: 50px;
+    }
+    h3 {
+        color: #a3783c;
+        font-size: 18px;
+        font-weight: 300;
+        margin-bottom: 36px;
+        @media(min-width: $screen-md) {
+            margin-bottom: 15px;
+        }
+        @media(min-width:1500px) {
+            margin-bottom: 36px;
+        }
+    }
+    p {
+        margin-bottom: 28px;
+        @media(min-width: $screen-md) {
+            margin-bottom: 20px;
+        }
+        @media(min-width:1500px) {
+            margin-bottom: 28px;
+        }
+    }
+}
+
+.btn-send {
+    background: transparent;
+    border: 1px solid #e1e1e1;
+    color: #a3783c;
+    width: 90px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    padding: 0;
+    @include border-radius(14px);
+    margin-top: 28px;
+    &:hover {
+        @include transition2;
+        color: #fff;
+        background: #a3783c;
+        border-color: #a3783c;
+    }
+}

@@ -1,0 +1,56 @@
+/*
+		7.4. Mobile
+			
+			7.4.2. Small mobile
+ */
+
+
+// cart
+
+.pushmenu-push-toright-cart { right: 320px; }
+.pushmenu.pushmenu-left{width:320px;}
+.menu-social{width:320px;}
+.cart-bottom{width:300px;}
+
+.product-collection-grid{
+	[class*="col-xs-"] {
+	    width: 100%;
+	}
+}
+.featured-product{
+	[class*="col-xs-"] {
+	    width: 100%;
+	}
+}
+.vow-connect{
+	[class*="col-xs-"] {
+	    width: 100%;
+	    margin-bottom:15px;
+	}
+}
+.related-collection{
+	[class*="col-xs-"] {
+	    width: 100%;
+	}
+}
+.product-img img {
+    width: 100%;
+}
+footer {
+	[class*="col-xs-"] {
+	    width: 100%;
+	}
+}
+.connect-img img {
+    width: 100%;
+}
+.blog-grid {
+	[class*="col-xs-"] {
+	    width: 100%;
+	}
+}
+.about .author{
+	[class*="col-xs-"] {
+	    width: 100%;
+	}
+}
