@@ -1,8 +1,6 @@
 @extends('home.layout')
 
-@section('title')
-<title>Wedding Planner | Register</title>
-@endsection
+@section('title','Info Pemesanan')
 
 @section('content')
 

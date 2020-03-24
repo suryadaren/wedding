@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Wedding Planner | Home</title>
+    <title>{{config('app.name')}} | Home</title>
     <link rel="stylesheet" href="/asset/css/owl.carousel.min.css">
     <link rel="shortcut icon" href="/asset/img/favicon.png" type="image/png">
     <link rel="stylesheet" href="/asset/css/slick.css">
@@ -15,147 +15,17 @@
 </head>
 
 <body>
-    <!--push menu cart -->
-    <div class="pushmenu pushmenu-left cart-box-container">
-        <div class="cart-list">
-            <span class="close-left js-close"><i class="ion-ios-close-outline f-24"></i></span>
-            <h3 class="cart-title">Your Cart</h3>
-            <ul class="list">
-                <li>
-                    <a href="#" title="" class="cart-product-image"><img src="/asset/img/cart_1.jpg" alt="Product"></a>
-                    <div class="text">
-                        <p class="product-name">Beaded Flower Headband</p>
-                        <p class="product-price">$145.00</p>
-                        <div class="clearfix"></div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#" title="" class="cart-product-image"><img src="/asset/img/cart_2.jpg" alt="Product"></a>
-                    <div class="text">
-                        <p class="product-name">Brid in the Cage 299pln</p>
-                        <p class="product-price">$145.00</p>
-                        <div class="clearfix"></div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#" title="" class="cart-product-image"><img src="/asset/img/cart_1.jpg" alt="Product"></a>
-                    <div class="text">
-                        <p class="product-name">Brid in the Cage 299pln</p>
-                        <p class="product-price">$85.00</p>
-                        <div class="clearfix"></div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#" title="" class="cart-product-image"><img src="/asset/img/cart_2.jpg" alt="Product"></a>
-                    <div class="text">
-                        <p class="product-name">Brid in the Cage 299pln</p>
-                        <p class="product-price">$85.00</p>
-                        <div class="clearfix"></div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#" title="" class="cart-product-image"><img src="/asset/img/cart_1.jpg" alt="Product"></a>
-                    <div class="text">
-                        <p class="product-name">Brid in the Cage 299pln</p>
-                        <p class="product-price">$85.00</p>
-                        <div class="clearfix"></div>
-                    </div>
-                </li>
-            </ul>
-            <div class="cart-bottom">
-                <p class="total"><span>Subtotal</span> $560.00</p>
-                <div class="cart-button">
-                    <a class="checkout" href="#" title="">Check out</a>
-                    <a class="edit-cart" href="#" title="edit cart">Edit cart</a>
-                </div>
-                <a href="#" class="text">Our Shipping & Return Policy</a>
-            </div>
-            <!-- End cart bottom -->
-        </div>
-    </div>
-    <!-- End cart -->
-    <!--search popup-->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close close-popup" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">SEARCH HERE</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group">
-                        <form method="get" class="searchform" action="/search" role="search">
-                            <input type="hidden" name="type" value="product">
-                            <input type="text" name="q" class="form-control control-search">
-                            <span class="input-group-btn">
-                                  <button class="btn btn-default button_search" type="button"><i data-toggle="dropdown" class="icon-icon-search"></i></button>
-                                </span>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--END  Modal content-->
     <div class="wrappage">
         <header id="header" class="header-v4 header-top-absolute">
             <div class="container">
                 <div class="row">
                     <div class="vow-topbar">
-                        <div class="topbar-mobile-l hidden-lg hidden-md">
-                            <div class="element-mobile hidden-xs">
-                                <div class="has-element">
-                                    <div class="element-language dropdown">
-                                        <a id="label2" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            
-                              <span>EN</span>
-                              <span class="fa fa-caret-down f-10"></span>
-                            </a>
-                                        <ul class="dropdown-menu" aria-labelledby="label2">
-                                            <li><a href="#">EN</a></li>
-                                            <li><a href="#">DE</a></li>
-                                            <li><a href="#">FR</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="element-currency dropdown">
-                                        <a id="label3" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            
-                              <span>USD</span>
-                              <span class="fa fa-caret-down f-10"></span>
-                            </a>
-                                        <ul class="dropdown-menu" aria-labelledby="label3">
-                                            <li><a href="#">USD</a></li>
-                                            <li><a href="#">AUD</a></li>
-                                            <li><a href="#">EUR</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="element-mobile">
-                                <a href="#" data-toggle="modal" data-target="#myModal"><i class="ion-ios-search icon-rotate-90 f-24"></i></a>
-                            </div>
-                            <div class="element-mobile">
-                                <a href="#" class="cart-mobile open-cart"><img src="/asset/img/icon-cart.png" alt="" class=""><span class="count cart-count mobile v2">2</span></a>
-                            </div>
-                            <div class="element-mobile">
-                                <a href="#"><i class="ion-ios-heart-outline f-24"></i></a>
-                            </div>
-                            <div class="element-mobile">
-                                <a href="#"><i class="icon-user f-16 f-style"></i></a>
-                            </div>
-                        </div>
                         <div class="topbar-left v4 hidden-xs hidden-sm">
                             <div class="vow-icon-menu v4 js-menu hidden-xs hidden-sm">
                                 <span class="vow-iconbar"></span>
                                 <span class="vow-iconbar"></span>
                                 <span class="vow-iconbar"></span>
                             </div>
-                            <ul class="navbar-topbar-left">
-                                <li><a href="#" class="open-cart">My cart <span>( 0 )</span></a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Register</a></li>
-                            </ul>
                         </div>
                         <div class="topbar-right">
                             <div class="logo v4"><a href="#"><img src="/asset/img/vow-text-logo.png" alt="logo"></a></div>
@@ -171,18 +41,12 @@
                             <nav class="main-menu v2 js-open-menu">
                                 <div class="collapse navbar-collapse" id="myNavbar">
                                     <ul class="nav navbar-nav js-menubar">
-                                        <li class="level1 active dropdown"><a href="#">Home</a>
+                                        <li class="level1 active dropdown"><a href="/">Home</a>
                                         </li>
                                         <li class="level1 active dropdown">
-                                            <a href="/asset/about.html">About</a>
+                                            <a href="/register">Register</a>
                                         </li>
-                                        <li class="level1 dropdown hassub"><a href="#">Shop</a>
-                                        </li>
-                                        <li class="level1 active dropdown">
-                                            <a href="#">Blog</a>
-                                        </li>
-                                        <li class="level1 active dropdown">
-                                            <a href="contact.html">Contact</a>
+                                        <li class="level1 dropdown hassub"><a href="/login">Login</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -202,7 +66,7 @@
                     </div>
                 </div>
                 <div class="slider-img">
-                    <img src="/asset/img/slider/h4_slide_2.jpg" alt="" class="img-responsive">
+                    <img src="/asset/img/slider/h4_slide_1.jpg" alt="" class="img-responsive">
                     <div class="slider-content">
                         <div class="container">
                             <h3>New arrivals</h3>
@@ -210,7 +74,7 @@
                     </div>
                 </div>
                 <div class="slider-img">
-                    <img src="/asset/img/slider/h4_slide_3.jpg" alt="" class="img-responsive">
+                    <img src="/asset/img/slider/h4_slide_1.jpg" alt="" class="img-responsive">
                     <div class="slider-content">
                         <div class="container">
                             <h3>New arrivals</h3>

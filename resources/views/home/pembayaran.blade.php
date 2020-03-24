@@ -1,8 +1,6 @@
 @extends('home.layout')
 
-@section('title')
-<title>Wedding Planner | Login</title>
-@endsection
+@section('title', 'Pembayaran')
 
 @section('content')
 

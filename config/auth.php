@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'customer',
         'passwords' => 'users',
     ],
 
@@ -36,9 +36,17 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admins',
+        ],
+        'customer' => [
+            'driver' => 'session',
+            'provider' => 'customers',
+        ],
+        'wedding_organizer' => [
+            'driver' => 'session',
+            'provider' => 'wedding_organizers',
         ],
 
         'api' => [
@@ -66,9 +74,17 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'admins' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\user::class,
+        ],
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => App\user::class,
+        ],
+        'wedding_organizers' => [
+            'driver' => 'eloquent',
+            'model' => App\user::class,
         ],
 
         // 'users' => [
