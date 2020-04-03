@@ -24,23 +24,33 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+              <a href="/wo/tambah_paket" class="btn btn-primary">Tambah Paket</a>
+              <br>
+              <br>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Foto</th>
                   <th>Nama</th>
+                  <th>Harga</th>
                   <th>Deskripsi</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr style="background-color: white">
-                      <td>oke</td>
-                      <td>oks</td>
+                  @foreach($pakets as $paket)
+                    <tr>
+                      <td><img src="{{Storage::url($paket->foto)}}" style="width: 100px" alt="img"></td>
+                      <td>{{$paket->nama_paket}}</td>
+                      <td>Rp. {{$paket->harga}},-</td>
+                      <td>{{$paket->deskripsi}}</td>
                       <td>
-                        <a href="admin/lihat_notifikasi/" class="btn btn-primary"><abbr title="Lihat"><i class="fa fa-eye"></i> </abbr></a>
-                        <a onclick="hapus('1')" class="btn btn-danger"><abbr title="Hapus"><i class="fa fa-trash"></i> </abbr></a>
+                        <a href="/wo/tambah_item_paket/{{$paket->id}}" class="btn btn-primary"><abbr title="Tambah Item"><i class="fa fa-plus"></i> </abbr></a>
+                        <a href="/wo/edit_paket/{{$paket->id}}" class="btn btn-warning"><abbr title="Edit"><i class="fa fa-edit"></i> </abbr></a>
+                        <a onclick="hapus('{{$paket->id}}')" class="btn btn-danger"><abbr title="Hapus"><i class="fa fa-trash"></i> </abbr></a>
                       </td>
                     </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -65,10 +75,10 @@
               </button>
             </div>
             <div class="modal-body">
-              <p>Apakah Anda yakin ingin menghapus notifikasi ini ?</p>
+              <p>Apakah Anda yakin ingin menghapus paket ini ?</p>
             </div>
             <div class="modal-footer justify-content-between">
-              <form name="form" action="/admin/hapus_notifikasi" method="post">
+              <form name="form" action="/wo/hapus_paket" method="post">
                 {{csrf_field()}}
                 <input type="hidden" name="id">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

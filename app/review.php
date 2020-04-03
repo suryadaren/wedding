@@ -13,6 +13,10 @@ class review extends Authenticatable
     protected $table = 'review';
 
     protected $fillable = [
-        'customer_id', 'wedding_organizer_id', 'bintang', 'komentar'
+        'customer_id', 'wedding_organizer_id', 'pemesanan_id','bintang', 'komentar'
     ];
+
+    public function customer(){
+    	return $this->belongsTo(customer::class,'customer_id');
+    }
 }

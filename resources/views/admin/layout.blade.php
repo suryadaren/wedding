@@ -6,7 +6,7 @@
   <title>{{config('app.name')}} | Admin Pages</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/adminTemplate/dist/img/icon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/asset/img/favicon.png" type="image/png">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/adminTemplate/plugins/fontawesome-free/css/all.min.css">
@@ -45,11 +45,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
-            <a href="/admin/profil" class="nav-link {{ (request()->is('admin/profil')) ? 'active' : '' }}">
+            <a href="/admin" class="nav-link {{ (request()->is('admin')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Profil 
-                <span class="right badge badge-danger">3</span>
               </p>
             </a>
           </li>
@@ -81,6 +80,14 @@
               <i class="nav-icon fas fa-donate"></i>
               <p>
                 Pembayaran
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="/admin/pencairan_dana" class="nav-link {{ (request()->is('admin/pencairan_dana*')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-hand-holding-usd"></i>
+              <p>
+                Pencairan Dana
               </p>
             </a>
           </li>

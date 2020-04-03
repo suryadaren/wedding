@@ -23,7 +23,7 @@ class CreatePembayaranTable extends Migration
             $table->string('nomor_rekening');
             $table->string('nama_pemilik');
             $table->string('jumlah');
-            $table->string('bukti_pembayaran');
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('status');
 
             $table->timestamps();

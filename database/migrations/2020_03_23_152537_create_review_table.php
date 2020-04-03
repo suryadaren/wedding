@@ -18,6 +18,7 @@ class CreateReviewTable extends Migration
 
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('pemesanan_id');
+            $table->unsignedBigInteger('wedding_organizer_id')->nullable();
 
             $table->string('bintang');
             $table->string('komentar');
@@ -30,6 +31,11 @@ class CreateReviewTable extends Migration
 
             $table->foreign('pemesanan_id')
               ->references('id')->on('pemesanan')
+              ->onDelete('cascade');
+
+
+            $table->foreign('wedding_organizer_id')
+              ->references('id')->on('wedding_organizer')
               ->onDelete('cascade');
         });
     }

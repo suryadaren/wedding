@@ -26,6 +26,7 @@ class CreateWeddingorganizerTable extends Migration
             $table->string('nama_bank');
             $table->string('nomor_rekening');
             $table->string('nama_pemilik');
+            $table->string('rating');
             $table->string('foto_profil');
             $table->string('foto_ijin_usaha')->nullable();
             $table->timestamps();

@@ -15,4 +15,8 @@ class admin extends Authenticatable
     protected $fillable = [
         'user_id', 'alamat', 'nomor_telepon', 'nama_bank', 'nomor_rekening', 'nama_pemilik', 'foto_profil'
     ];
+    
+    public function user(){
+    	return $this->belongsTo(user::class,'user_id');
+    }
 }

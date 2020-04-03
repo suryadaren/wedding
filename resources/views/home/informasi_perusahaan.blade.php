@@ -7,152 +7,183 @@
 
         <div class="about">
             <div class="about-top text-center">
-                <h3 class="about-heading v-color1">Wedding Orginizer 1</h3>
+                <h3 class="about-heading v-color1">{{$wo->nama_perusahaan}}</h3>
             </div>
             <div class="container">
                 <div class="about-top-img text-center">
                     <div class="about-img">
-                        <a href="" class="hover-images"><img src="/asset/img/others/about2.jpg" alt=""></a>
-                        <div class="about-title"><h3 class="v-color1">About  Marriage Vows</h3></div>
+                        <a href="" class="hover-images"><img src="{{Storage::url($wo->foto_profil)}}" alt=""></a>
+                        <div class="about-title"><h3 class="v-color1">About <br>{{$wo->nama_perusahaan}}</h3></div>
                     </div>
                 </div>
                 <div class="about-content">
-                    <h3>Information Of Wedding Organizer</h3>
-                    <div class="about-content-detail">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-6 first-column">
-                                <h3 class="icon-text">T</h3>
-                                <p>he other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and an trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through a weakness of will, which is the same as saying ath</p>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, It is a long established fact that a reader will be dis</p>
-                            </div>
+                    <h3 style="margin-left: 20px">Tentang {{$wo->nama_perusahaan}}</h3>
+
+                    <div class="checkout-price">
+                        <div class="checkout-item color-all">
+                            <div>Deskripsi</div>
+                            <div>{{$wo->tentang_perusahaan}}</div>
+                        </div>
+                        <div class="checkout-item color-all">
+                            <div>Alamat</div>
+                            <div>{{$wo->alamat}}</div>
+                        </div>
+                        <div class="checkout-item ">
+                            <div>Nomor Telepon</div>
+                            <div>{{$wo->nomor_telepon}}</div>
+                        </div>
+                        <div class="checkout-item color-all">
+                            <div>Total</div>
+                            <div>315.00 USD</div>
                         </div>
                     </div>
                 </div>
-                <div class="about-author">
+                <div class="about-author text-center">
                     <div class="intro">
                         <h3 class="v-color1">Our Packages</h3>
                         <br>
                     </div>
 
                     <div class="collection-full">
-                        <div class="slider-collectionf js-slider-collectionf">
-                            <div class="items">
-                                <img src="/asset/img/collection/f_1.jpg" alt="images">
-                                <div class="box-content-left text">
-                                    <a href="/fasilitas"><h3 class="slider-title">Packages 1</h3></a>
-                                    <p class="slider-desc">autumn 2018 by Jang Choou</p>
+                            <div class="row">
+                            
+                            @foreach($wo->paket as $paket)
+                                <div class="range range-xs-center offset-top-45">
+                                  <div class="cell-xs-8 cell-sm-5 cell-md-3">
+                                    <div class="box-pricing">
+                                      <div class="box-pricing-inner">
+                                        <div class="box-pricing-label">
+                                          <span>TOP RATED</span> </div>
+                                        <p class="text-bold text-ubold text-uppercase text-gray-base text-big text-uppercase">{{$paket->nama_paket}}</p>
+                                        <br>
+                                        <div class="text-primary"><span><h3><sup>Rp</sup>{{$paket->harga}}</h3></span></div>
+                                        <br>
+                                        <div class="offset-top-8">
+                                          <p class="text-extra-small text-silver-chalice">{{$paket->deskripsi}}</p>
+                                        </div>
+                                        <div class="offset-top-25">
+                                          <hr class="hr bg-gallery">
+                                        </div>
+                                        <div class="offset-top-25 reveal-inline-block">
+                                          <ul class="list list-12 list-marked-icon text-gray-base text-small text-left">
+                                            @foreach($paket->item_pakets as $item)
+                                            <li>{{$item->item->nama_item}}</li>
+                                            @endforeach
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      @if(auth()->guard('customer')->check())
+                                      <div class="offset-top-4"><a href="/customer/tanggal/{{$paket->id}}" class="btn btn-block btn-primary">BOOK NOW</a></div>
+                                      @else
+                                      <div class="offset-top-4"><a onclick="login()" class="btn btn-block btn-primary">BOOK NOW</a></div>
+                                      @endif
+                                    </div>
+                                  </div>
                                 </div>
+                            @endforeach
+
                             </div>
-                            <div class="items">
-                                <img src="/asset/img/collection/f_2.jpg" alt="images">
-                                <div class="box-content-left text">
-                                    <a href="/fasilitas"><h3 class="slider-title">Packages 2</h3></a>
-                                    <p class="slider-desc">autumn 2018 by Jang Choou</p>
-                                </div>
-                            </div>
-                            <div class="items">
-                                <img src="/asset/img/collection/f_3.jpg" alt="images">
-                                <div class="box-content-left text">
-                                    <a href="/fasilitas"><h3 class="slider-title">Packages 3</h3></a>
-                                    <p class="slider-desc">autumn 2018 by Jang Choou</p>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="custom">
-                             <div class="post-fade">
-                             </div>
-                             <div class="pagingInfo"></div>
-                         </div>
-                         <div class="f-colect-title">
-                             <h3>collection</h3>
-                         </div>
-                </div>
+                    </div>
                 </div>
 
-                <div id="review" class="tab-pane fade in active ">
+                <div id="review" class="tab-pane fade in active " style="margin-top: 100px">
                     <div class="tab-review">
-                        <h3 class="text-uppercase">( 1 ) REVIEW</h3>
+                        <h3 class="text-uppercase">( {{count($wo->reviews)}} ) REVIEW</h3>
+                        @foreach($wo->reviews as $review)
                         <div class="author">
                             <div class="author-avt">
-                                <img src="img/detail/author.png" alt="">
+                                <img src="{{Storage::url($review->customer->foto_profil)}}" alt="">
                             </div>
                             <div class="author-cmt">
-                                <span class="author-name text-uppercase">jin.simp</span>
-                                <span class="post-date">/ 12 October 2018, 20:05 </span>
+                                <span class="author-name text-uppercase">{{$review->customer->nama_lengkap}}</span>
+                                <span class="post-date">/ {{$review->created_at}} </span>
                                 <div class="rating-star">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    @if($review->bintang == 0)
+                                    <i>0</i>
+                                    @elseif($review->bintang > 0 && $review->bintang < 1)
+                                        <i class="fa fa-star-half"></i>
+                                    @elseif($review->bintang == 1)
+                                        <i class="fa fa-star"></i>
+                                    @elseif($review->bintang > 1 && $review->bintang <2)
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half"></i>
+                                    @elseif($review->bintang == 2)
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    @elseif($review->bintang > 2 && $review->bintang <3)
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half"></i>
+                                    @elseif($review->bintang == 3)
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    @elseif($review->bintang > 3 && $review->bintang <4)
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half"></i>
+                                    @elseif($review->bintang == 4)
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    @elseif($review->bintang > 4 && $review->bintang <5)
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half"></i>
+                                    @elseif($review->bintang == 5)
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    @endif
                                 </div>
-                                <p class="cmt">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, </p>
+                                <p class="cmt">{{$review->komentar}}</p>
                             </div>
                         </div>
-                        <div class="review-reply">
-                            <h3>ADD A REVIEW</h3>
-                            <div class="rating-star v2">
-                                <span>Rating :</span>
-                                <div class="rating-group one-star">
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
-                                <div class="rating-group two-star">
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
-                                <div class="rating-group three-star">
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
-                                <div class="rating-group four-star">
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
-                                <div class="rating-group five-star">
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <form action="#" class="comment-form">
-                                
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label>Review</label>
-                                            <textarea name="note" id="message" tabindex="2" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group v2">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            
-                                            <input type="text" name="first_name" class="form-control" value="" placeholder="Name*">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group v2">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            
-                                            <input type="text" name="email" class="form-control" value="" placeholder="Email*">
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn-submit">Submit</button>
-                            </form>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+      <!-- modal hapus -->
+      <div class="modal fade" id="login">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Login Akses</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Anda Harus login untuk melakukan booking wedding organizer paket <br>
+              Apakah anda ingin menuju halaman login ?</p>
+              <br>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                <a href="/login" target="_blank" class="btn btn-primary">Ya</a>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+        <script>
+          function login(){
+            $('#login').modal();
+          }
+        </script>
+        
 
 @endsection

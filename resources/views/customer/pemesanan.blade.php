@@ -1,4 +1,4 @@
-@extends('wo.layout')
+@extends('customer.layout')
 
 @section('content')
 
@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1>Item Tambahan</h1>
+            <h1>Wedding Orginizer</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -16,33 +16,39 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
+
         <div class="col-12">
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Daftar Item Tambahan</h3>
+              <h3 class="card-title">Daftar Wedding Orginizer</h3>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
+            <div class="card-body"><table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Nama</th>
-                  <th>Deskripsi</th>
+                  <th>Wedding Organizer</th>
+                  <th>Paket</th>
                   <th>Harga</th>
+                  <th>Tanggal</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr style="background-color: white">
-                      <td>oke</td>
-                      <td>oks</td>
-                      <td>oks</td>
+                  @foreach($pemesanans as $pemesanan)
+                    <tr>
+                      <td>{{$pemesanan->paket->wedding_organizer->nama_perusahaan}}</td>
+                      <td>{{$pemesanan->paket->nama_paket}}</td>
+                      <td>Rp. {{$pemesanan->harga}},-</td>
+                      <td>{{$pemesanan->tanggal}}</td>
                       <td>
-                        <a href="admin/lihat_notifikasi/" class="btn btn-primary"><abbr title="Lihat"><i class="fa fa-eye"></i> </abbr></a>
-                        <a onclick="hapus('1')" class="btn btn-danger"><abbr title="Hapus"><i class="fa fa-trash"></i> </abbr></a>
+                      <span class="badge badge-success">{{$pemesanan->status}}</span></td>
+                      <td>
+                        <a href="/customer/lihat_pemesanan/{{$pemesanan->id}}" class="btn btn-primary"><abbr title="Lihat"><i class="fa fa-eye"></i> </abbr></a>
                       </td>
                     </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -56,6 +62,9 @@
     </section>
     <!-- /.content -->
 
+
+
+
       <!-- modal hapus -->
       <div class="modal fade" id="hapus">
         <div class="modal-dialog">
@@ -67,10 +76,10 @@
               </button>
             </div>
             <div class="modal-body">
-              <p>Apakah Anda yakin ingin menghapus notifikasi ini ?</p>
+              <p>Apakah Anda yakin ingin menghapus data ini ?</p>
             </div>
             <div class="modal-footer justify-content-between">
-              <form name="form" action="/admin/hapus_notifikasi" method="post">
+              <form name="form_hapus" method="post" action="/admin/hapus_wo">
                 {{csrf_field()}}
                 <input type="hidden" name="id">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -84,12 +93,11 @@
       </div>
       <!-- /.modal -->
 
-
 <script>
+  
   function hapus(id){
-    document.forms['form']['id'].value=id;
+    document.forms['form_hapus']['id'].value=id;
     $('#hapus').modal();
   }
 </script>
-
 @stop

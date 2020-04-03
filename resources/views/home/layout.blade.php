@@ -45,11 +45,18 @@
                                 <ul class="nav navbar-nav js-menubar">
                                     <li class="level1 active dropdown"><a href="/">Home</a>
                                     </li>
-                                    <li class="level1 active dropdown">
-                                        <a href="/register">Register</a>
-                                    </li>
-                                    <li class="level1 dropdown hassub"><a href="/login">Login</a>
-                                    </li>
+                                    @if(auth()->guard('customer')->check())
+                                        <li class="level1 dropdown hassub"><a href="/customer">My Page</a>
+                                        </li>
+                                        <li class="level1 dropdown hassub"><a href="/customer/logout">logout</a>
+                                        </li>
+                                    @else
+                                        <li class="level1 active dropdown">
+                                            <a href="/register">Register</a>
+                                        </li>
+                                        <li class="level1 dropdown hassub"><a href="/login">Login</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </nav>
@@ -79,6 +86,7 @@
     </div>
     <script src="/asset/js/jquery.js"></script>
     <script src="/asset/js/bootstrap.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/asset/js/owl.carousel.min.js"></script>
     <script src="/asset/js/slick.min.js"></script>
     <script src="/asset/js/main.js"></script>

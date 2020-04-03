@@ -9,6 +9,13 @@ use App\user;
 use App\admin;
 use App\wedding_organizer;
 use App\customer;
+use App\pembayaran;
+use App\pencairan_dana;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\pembayaranDpBerhasilToCustomer;
+use App\Mail\pelunasanPembayaranBerhasilToCustomer;
+use App\Mail\pesananBaruToWo;
+use App\Mail\pencairanDanaSelesaiToWo;
 
 class AdminController extends Controller
 {
@@ -34,9 +41,14 @@ class AdminController extends Controller
             ]);
             
         if ($validator->fails()) {
+            $notif = [
+                "message" => "Gagal Mengupdate Data Karena ada data yang kosong",
+                "alert-type" => "error"
+            ];
             return back()
                 ->withErrors($validator)
-                ->withInput();
+                ->withInput()
+                ->with($notif);
         }else{
             $user = user::find($request->id);
             $admin = $user->admin->first();
@@ -100,10 +112,76 @@ class AdminController extends Controller
         return back()->with($notif);
     }
     function pembayaran(){
-    	return view('admin.pembayaran');
+        $pembayarans = pembayaran::orderBy('updated_at','desc')->get();
+        return view('admin.pembayaran',compact('pembayarans'));
     }
-    function lihat_pembayaran(){
-        return view('admin.lihat_pembayaran');
+    function lihat_pembayaran($id){
+        $pembayaran = pembayaran::find($id);
+        return view('admin.lihat_pembayaran',compact('pembayaran'));
+    }
+    function setujui_pembayaran(Request $request){
+        $status = "menunggu penjadwalan meeting";
+        $pembayaran = pembayaran::find($request->id);
+        $pembayaran->status = $status;
+        $pembayaran->save();
+
+        $pemesanan = $pembayaran->pemesanan;
+        $pemesanan->status = $status;
+        $pemesanan->save();
+
+        Mail::to($pembayaran->customer->user->email)->send(new pembayaranDpBerhasilToCustomer($pembayaran));
+        Mail::to($pembayaran->pemesanan->paket->wedding_organizer->user->email)->send(new pesananBaruToWo($pembayaran));
+
+        $notif = [
+            "message" => "Berhasil mengkonfirmasi pembayaran DP oleh customer",
+            "alert-type" => "success"
+        ];
+
+        return back()->with($notif);
+    }
+    function setujui_pelunasan(Request $request){
+        $status = "menunggu konfirmasi pemesanan selesai";
+        $pembayaran = pembayaran::find($request->id);
+        $pembayaran->status = $status;
+        $pembayaran->save();
+
+        $pemesanan = $pembayaran->pemesanan;
+        $pemesanan->status = $status;
+        $pemesanan->save();
+
+        Mail::to($pembayaran->customer->user->email)->send(new pelunasanPembayaranBerhasilToCustomer($pembayaran));
+
+        $notif = [
+            "message" => "Berhasil mengkonfirmasi pelunasan pembayaran oleh customer",
+            "alert-type" => "success"
+        ];
+
+        return back()->with($notif);
+    }
+    function pencairan_dana(){
+        $pencairan_dana = pencairan_dana::orderBy('created_at', 'desc')->get();
+        return view('admin.pencairan_dana',compact('pencairan_dana'));
+    }
+    function lihat_pencairan_dana($id){
+        $pencairan_dana = pencairan_dana::find($id);
+        return view('admin.lihat_pencairan_dana',compact('pencairan_dana'));
+    }
+    function pencairan_dana_selesai(Request $request){
+        $pencairan_dana = pencairan_dana::find($request->id);
+        
+        $path = $request->bukti_pembayaran->store('public/data/bukti_pencairan_dana');
+        $pencairan_dana->status = "pencairan dana telah selesai";
+        $pencairan_dana->bukti_pembayaran = $path;
+        $pencairan_dana->save();
+
+        Mail::to($pencairan_dana->pemesanan->wedding_organizer->user->email)->send(new pencairanDanaSelesaiToWo($pencairan_dana));
+
+        $notif = [
+            "message" => "Berhasil melakukan pencairan dana",
+            "alert-type" => "success"
+        ];
+
+        return back()->with($notif);
     }
     function logout(){
         $notif = [

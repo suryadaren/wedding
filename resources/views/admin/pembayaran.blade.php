@@ -27,27 +27,29 @@
             <div class="card-body"><table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Nama pemesan</th>
+                  <th>Nama Customer</th>
                   <th>WO</th>
                   <th>Jumlah</th>
-                  <th>Tanggal</th>
+                  <th>Tanggal Pembayaran</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
+                  @foreach($pembayarans as $pembayaran)
                   <tr>
-                    <td>nama</td>
-                    <td>email</td>
-                    <td>no</td>
-                    <td>no</td>
+                    <td>{{$pembayaran->customer->nama_lengkap}}</td>
+                    <td>{{$pembayaran->pemesanan->paket->wedding_organizer->nama_perusahaan}}</td>
+                    <td>Rp. {{$pembayaran->jumlah}},-</td>
+                    <td>{{$pembayaran->updated_at}}</td>
                     <td>
-                      <span class="badge badge-danger">ditolak</span>
+                      <span class="badge badge-success">{{$pembayaran->status}}</span>
                     </td>
                     <td>
-                      <a href="/admin/lihat_pembayaran" class="btn btn-primary"><abbr title="Lihat"><i class="fa fa-eye"></i> </abbr></a>
+                      <a href="/admin/lihat_pembayaran/{{$pembayaran->id}}" class="btn btn-primary"><abbr title="Lihat"><i class="fa fa-eye"></i> </abbr></a>
                     </td>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>

@@ -13,6 +13,11 @@ class item_tambahan extends Authenticatable
     protected $table = 'item_tambahan';
 
     protected $fillable = [
-        'pemesanan_id', 'item_wedding_organizer_id', 'harga_awal', 'harga_akhir'
+        'pemesanan_id', 'item_wedding_organizer_id'
     ];
+
+
+    public function item(){
+    	return $this->belongsTo(item_wedding_organizer::class,'item_wedding_organizer_id');
+    }
 }

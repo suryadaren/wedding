@@ -13,19 +13,15 @@ use App\customer;
 class HomeController extends Controller
 {
     public function index(){
-        return view('home.index');
+        $wedding_organizer = wedding_organizer::get();
+        return view('home.index', compact('wedding_organizer'));
     }
-    public function informasi_perusahaan(){
-        return view('home.informasi_perusahaan');
+    public function informasi_perusahaan($id){
+        $wo = wedding_organizer::find($id);
+        return view('home.informasi_perusahaan',compact('wo'));
     }
     public function fasilitas(){
         return view('home.fasilitas');
-    }
-    public function tanggal(){
-        return view('home.tanggal');
-    }
-    public function additional(){
-        return view('home.additional');
     }
     public function ringkasan_pemesanan(){
         return view('home.ringkasan_pemesanan');

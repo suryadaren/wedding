@@ -15,4 +15,14 @@ class item_paket extends Authenticatable
     protected $fillable = [
         'paket_wedding_organizer_id', 'item_wedding_organizer_id', 'harga_awal', 'harga_akhir'
     ];
+
+
+    public function item(){
+    	return $this->belongsTo(item_wedding_organizer::class,'item_wedding_organizer_id');
+    }
+
+
+    public function paket(){
+    	return $this->belongsTo(paket_wedding_organizer::class,'paket_wedding_organizer_id');
+    }
 }

@@ -19,9 +19,6 @@ class CreateItemTambahanTable extends Migration
             $table->unsignedBigInteger('item_wedding_organizer_id');
             $table->unsignedBigInteger('pemesanan_id');
 
-            $table->string('harga_awal');
-            $table->string('harga_akhir');
-
             $table->timestamps();
 
             $table->foreign('item_wedding_organizer_id')

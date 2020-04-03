@@ -36,17 +36,23 @@
                 </tr>
                 </thead>
                 <tbody>
+                  @foreach($pemesanans as $pemesanan)
                     <tr style="background-color: white">
-                      <td>oke</td>
-                      <td>oks</td>
-                      <td>okee</td>
-                      <td>okee</td>
-                      <td>okee</td>
+                      <td>{{$pemesanan->customer->nama_lengkap}}</td>
+                      <td>Rp. {{$pemesanan->harga}},-</td>
+                      <td>{{$pemesanan->tanggal}}</td>
+                      <td>{{$pemesanan->paket->nama_paket}}</td>
                       <td>
-                        <a href="admin/lihat_notifikasi/" class="btn btn-primary"><abbr title="Lihat"><i class="fa fa-eye"></i> </abbr></a>
-                        <a onclick="hapus('1')" class="btn btn-danger"><abbr title="Hapus"><i class="fa fa-trash"></i> </abbr></a>
+
+                      <span class="badge badge-success">{{$pemesanan->status}}</span>
+
+                      </td>
+                      <td>
+                        <a href="/wo/lihat_pemesanan/{{$pemesanan->id}}" class="btn btn-primary"><abbr title="Lihat"><i class="fa fa-eye"></i> </abbr></a>
+                        <a onclick="hapus('{{$pemesanan->id}}')" class="btn btn-danger"><abbr title="Hapus"><i class="fa fa-trash"></i> </abbr></a>
                       </td>
                     </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>

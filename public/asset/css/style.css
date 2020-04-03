@@ -6503,7 +6503,7 @@ body {
   font-weight: 300; }
   @media (min-width: 1025px) {
     .page-title {
-      font-size: 80px; } }
+      font-size: 40px; } }
 
 .backto {
   display: inline-block;

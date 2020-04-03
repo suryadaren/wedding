@@ -6,7 +6,7 @@
   <title>Wedding | Wedding Orginizer Pages</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/adminTemplate/dist/img/icon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/asset/img/favicon.png" type="image/png">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/adminTemplate/plugins/fontawesome-free/css/all.min.css">
@@ -20,6 +20,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 </head>
+@yield('css')
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -69,10 +70,10 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="/wo/item_tambahan" class="nav-link {{ (request()->is('wo/item_tambahan*')) ? 'active' : '' }}">
+            <a href="/wo/item" class="nav-link {{ (request()->is('wo/item')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-cart-plus"></i>
               <p>
-                Itam Tambahan
+                Item
               </p>
             </a>
           </li>
@@ -118,6 +119,8 @@
 <script src="/adminTemplate/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/adminTemplate/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- DataTables -->
 <script src="/adminTemplate/plugins/datatables/jquery.dataTables.js"></script>
 <script src="/adminTemplate/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
@@ -154,5 +157,6 @@
     });
   });
 </script>
+@yield('js')
 </body>
 </html>

@@ -1,221 +1,115 @@
 @extends('home.layout')
 
-@section('title', 'additional item')
+@section('title', 'Item Tambahan')
 
 @section('content')
 
     <div class="container">
-        <ul class="breadcrumb">
-        </ul>
-        <h1 class="page-title text-center">Additional Item</h1>
+        <br>
+        <h3 class="page-title text-center">Item Tambahan</h3>
+        <hr>
+        <div class="row">
 
-        <h3 class="text text-center">Choose your additional item!</h3>
-        <div class="checkout-page">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12 col-pd-v2">
-                    <div class="product-collection-grid product-grid product-list">
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item">
-                                <div class="product-img">
-                                    <a class="hover-images" href="#"><img src="/asset/img/products/pd_1.jpg" alt="" class="img-reponsive"></a>
-                                    <div class="overlay-img product-action box-content-left">
-                                        <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                                        <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn-switch" title="Compare"><i class="icon-shuffle"></i></a>
-                                    </div>
+                <div class="col-md-3 col-sm-3 col-xs-12 col-pd-v2">
+                    <div class="order">
+                        <h3>Detail Pesanan</h3>
+                        <br>
+                        <div class="filter-content">
+                            <div class="table-responsive">
+                                <div class="checkout-item color-all">
+                                    <div>Tanggal</div>
+                                    <div>{{$date}}</div>
                                 </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="#">Brid in the Cage 299pln</a></h3>
-                                    <div class="product-price">
-                                        <p class="price-n">$220.00</p>
-                                    </div>
-                                    <p class="product-desc">
-                                        Dress by SOAKED IN LUXURY. Long sleeves and rounded neckline. Mesh at neckline and on sleeves. Bodycon fit. Concealed zipper and button fastening to reverse. Thin lining. Made of 100% Polyester. Model is 170 cm tall and is wearing a size X-Small.
-                                    </p>
-                                    <div class="product-action-ver2">
-                                        <a class="v-add-cart">Add to cart</a>
-                                        <a class="button v-wishlist"><i class="icon-heart"></i></a>
-                                        <a class="button v-switch"><i class="icon-shuffle"></i></a>
-                                    </div>
+                                <div class="checkout-item color-all">
+                                    <div>Paket</div>
+                                    <div>{{$paket->nama_paket}}</div>
                                 </div>
+                                <div class="checkout-item color-all">
+                                    <div>Harga</div>
+                                    <div>Rp. {{$paket->harga}},-</div>
+                                </div>
+                                <div class="checkout-item color-all">
+                                    <div><strong>Total</strong></div>
+                                    <div>Rp. {{$paket->harga}},-</div>
+                                </div>
+
                             </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item">
-                                <div class="product-img">
-                                    <a class="hover-images" href="#"><img src="/asset/img/products/pd_2.jpg" alt="" class="img-reponsive"></a>
-                                    <div class="overlay-img product-action box-content-left">
-                                        <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                                        <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn-switch" title="Compare"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="#">Madeline bride</a></h3>
-                                    <div class="product-price">
-                                        <p class="price-n">$58.00 - $68.00</p>
-                                    </div>
-                                    <p class="product-desc">
-                                        Dress by SOAKED IN LUXURY. Long sleeves and rounded neckline. Mesh at neckline and on sleeves. 
-                                    </p>
-                                    <div class="product-action-ver2">
-                                        <a class="v-add-cart">Add to cart</a>
-                                        <a class="button v-wishlist"><i class="icon-heart"></i></a>
-                                        <a class="button v-switch"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
+                            <br>
+                            <h3>Detail Harga Item</h3>
+                            <br>
+                            <div>
+
+                                <table class="table checkout-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="checkouttb-title">Item</th>
+                                            <th class="checkouttb-title">Harga</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($paket->item_pakets as $item)
+                                        <tr class="checkout-item">
+                                            <td>{{$item->item->nama_item}}</td>
+                                            <td>Rp. {{$item->harga_akhir}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+
                             </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item">
-                                <div class="product-img">
-                                    <a class="hover-images" href="#"><img src="/asset/img/products/pd_3.jpg" alt="" class="img-reponsive"></a>
-                                    <div class="overlay-img product-action box-content-left">
-                                        <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                                        <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn-switch" title="Compare"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="#">Beaded Flower Headband</a></h3>
-                                    <div class="product-price">
-                                        <p class="price-n">$145.00</p>
-                                    </div>
-                                    <p class="product-desc">
-                                        Dress by SOAKED IN LUXURY. Long sleeves and rounded neckline. Mesh at neckline and on sleeves. Bodycon fit. Concealed zipper and button fastening to reverse. 
-                                    </p>
-                                    <div class="product-action-ver2">
-                                        <a class="v-add-cart">Add to cart</a>
-                                        <a class="button v-wishlist"><i class="icon-heart"></i></a>
-                                        <a class="button v-switch"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item">
-                                <div class="product-img">
-                                    <a class="hover-images" href="#"><img src="/asset/img/products/pd_4.jpg" alt="" class="img-reponsive"></a>
-                                    <div class="overlay-img product-action box-content-left">
-                                        <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                                        <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn-switch" title="Compare"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="#">Bridal Maxi Skirt in Tulle</a></h3>
-                                    <div class="product-price">
-                                        <p class="price-n">$150.00</p>
-                                    </div>
-                                    <p class="product-desc">
-                                        Dress by SOAKED IN LUXURY. Long sleeves and rounded neckline. Mesh at neckline and on sleeves. Bodycon fit. Concealed zipper and button fastening to reverse. Thin lining. Made of 100% Polyester. Model is 170 cm tall and is wearing a size X-Small.
-                                    </p>
-                                    <div class="product-action-ver2">
-                                        <a class="v-add-cart">Add to cart</a>
-                                        <a class="button v-wishlist"><i class="icon-heart"></i></a>
-                                        <a class="button v-switch"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item">
-                                <div class="product-img">
-                                    <a class="hover-images" href="#"><img src="/asset/img/products/pd_5.jpg" alt="" class="img-reponsive"></a>
-                                    <div class="overlay-img product-action box-content-left">
-                                        <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                                        <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn-switch" title="Compare"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="#">Jewelled Box Clutch Bag</a></h3>
-                                    <div class="product-price">
-                                        <p class="price-n">$465.00</p>
-                                    </div>
-                                    <p class="product-desc">
-                                        Dress by SOAKED IN LUXURY. Long sleeves and rounded neckline. Mesh at neckline and on sleeves. Bodycon fit. Concealed zipper and button fastening to reverse. 
-                                    </p>
-                                    <div class="product-action-ver2">
-                                        <a class="v-add-cart">Add to cart</a>
-                                        <a class="button v-wishlist"><i class="icon-heart"></i></a>
-                                        <a class="button v-switch"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item">
-                                <div class="product-img">
-                                    <a class="hover-images" href="#"><img src="/asset/img/products/pd_6.jpg" alt="" class="img-reponsive"></a>
-                                    <div class="overlay-img product-action box-content-left">
-                                        <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                                        <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn-switch" title="Compare"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="#">Becca Lace Strappy  Underwire Bra</a></h3>
-                                    <div class="product-price">
-                                        <p class="price-n">$370.00</p>
-                                    </div>
-                                    <p class="product-desc">
-                                        Dress by SOAKED IN LUXURY. Long sleeves and rounded neckline. Mesh at neckline and on sleeves. Bodycon fit. Concealed zipper and button fastening to reverse. 
-                                    </p>
-                                    <div class="product-action-ver2">
-                                        <a class="v-add-cart">Add to cart</a>
-                                        <a class="button v-wishlist"><i class="icon-heart"></i></a>
-                                        <a class="button v-switch"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item">
-                                <div class="product-img">
-                                    <a class="hover-images" href="#"><img src="/asset/img/products/pd_7.jpg" alt="" class="img-reponsive"></a>
-                                    <div class="overlay-img product-action box-content-left">
-                                        <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                                        <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn-switch" title="Compare"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="#">Becca Lace Thong</a></h3>
-                                    <div class="product-price">
-                                        <p class="price-n">$190.00</p>
-                                    </div>
-                                    <p class="product-desc">
-                                        Dress by SOAKED IN LUXURY. Long sleeves and rounded neckline. Mesh at neckline and on sleeves. Bodycon fit. Concealed zipper and button fastening to reverse. 
-                                    </p>
-                                    <div class="product-action-ver2">
-                                        <a class="v-add-cart">Add to cart</a>
-                                        <a class="button v-wishlist"><i class="icon-heart"></i></a>
-                                        <a class="button v-switch"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 product-item">
-                                <div class="product-img">
-                                    <a class="hover-images" href="#"><img src="/asset/img/products/pd_8.jpg" alt="" class="img-reponsive"></a>
-                                    <div class="overlay-img product-action box-content-left">
-                                        <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                                        <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn-switch" title="Compare"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="#">Olivia The Wolf Lace Hair  Comb</a></h3>
-                                    <div class="product-price">
-                                        <p class="price-n">$1,100.00</p>
-                                    </div>
-                                    <p class="product-desc">
-                                        Dress by SOAKED IN LUXURY. Long sleeves and rounded neckline. Mesh at neckline and on sleeves. Bodycon fit. Concealed zipper and button fastening to reverse. 
-                                    </p>
-                                    <div class="product-action-ver2">
-                                        <a class="v-add-cart">Add to cart</a>
-                                        <a class="button v-wishlist"><i class="icon-heart"></i></a>
-                                        <a class="button v-switch"><i class="icon-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                            <br>
                         </div>
                     </div>
-                    <div class="productfull-bottom v2">
-                        <div class="pagination-right">NEXT <a href="/ringkasan_pemesanan" class="backto vow-right"><i class="ion-ios-arrow-right"></i></a></div>
-                        <div class="clearfix"></div>
-                    </div>
                 </div>
-            </div>
+
+                <div class="col-md-9 col-sm-9 col-xs-12 col-pd">
+                    <form action="/customer/simpan_pemesanan" method="post">
+                        {{csrf_field()}}
+                        <input type="hidden" name="paket_id" value="{{$paket->id}}">
+                        <input type="hidden" name="date" value="{{$date}}">
+                        <div class="order">
+                            <h3>Pemilihan Item Tambahan</h3>
+                            <br>
+                            <div class="filter-content">
+                                <div class="form-group">
+                                    <label for="date">Silahkan Ceklis jika membutuhkan item tambahan</label>
+                                </div>
+                                <br>
+                            </div>
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Nama Item</th>
+                                        <th>Deskripsi</th>
+                                        <th>Harga</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($item_tambahan as $item)
+                                    <tr>
+                                        <td><input type="checkbox" name="item_tambahan[]" value="{{$item->id}}"></td>
+                                        <td>{{$item->nama_item}}</td>
+                                        <td>{{$item->deskripsi}}</td>
+                                        <td>Rp. {{$item->harga}},-</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <div class="footer">
+                                <input type="submit" value="Submit" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
         </div>
     </div>
 
+@endsection
+
+
+@section('js')
+
+<script>
+</script>
 @endsection

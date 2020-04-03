@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/asset/css/slick-theme.css">
     <link rel="stylesheet" href="/asset/css/owl.theme.default.min.css">
     <link rel="stylesheet" type="text/css" href="/asset/css/style.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -43,11 +44,18 @@
                                     <ul class="nav navbar-nav js-menubar">
                                         <li class="level1 active dropdown"><a href="/">Home</a>
                                         </li>
-                                        <li class="level1 active dropdown">
-                                            <a href="/register">Register</a>
-                                        </li>
-                                        <li class="level1 dropdown hassub"><a href="/login">Login</a>
-                                        </li>
+                                        @if(auth()->guard('customer')->check())
+                                            <li class="level1 dropdown hassub"><a href="/customer">My Page</a>
+                                            </li>
+                                            <li class="level1 dropdown hassub"><a href="/customer/logout">logout</a>
+                                            </li>
+                                        @else
+                                            <li class="level1 active dropdown">
+                                                <a href="/register">Register</a>
+                                            </li>
+                                            <li class="level1 dropdown hassub"><a href="/login">Login</a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </nav>
@@ -146,176 +154,92 @@
 
         <div class="featured-product">
             <div class="container">
-                <h3 class="vow-title">Our Wedding Orginizer</h3>
+                <h3 class="vow-title">Wedding Orginizer for You</h3>
                 <div class="row">
+                    @foreach($wedding_organizer as $wo)
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product-item">
                         <div class="product-img v2">
-                            <a class="hover-images" href="#"><img src="/asset/img/products/pd_1.jpg" alt="" class="img-reponsive"></a>
+                            <a class="hover-images" href="#"><img src="{{Storage::url($wo->foto_profil)}}" alt="" class="img-reponsive"></a>
                             <div class="overlay-img box-content-center hover-price">
                                 <div class="product-price inovl">
-                                    <p class="price-n">$58.00</p>
+                                    <p class="price-n text-center">
+                                        @if(count($wo->reviews) == 0)
+                                        <i>belum ada review</i>
+                                        @elseif($wo->rating == 0)
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating > 0 && $wo->rating < 1)
+                                            <i class="fa fa-star-half"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating == 1)
+                                            <i class="fa fa-star"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating > 1 && $wo->rating <2)
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating == 2)
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating > 2 && $wo->rating <3)
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating == 3)
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating > 3 && $wo->rating <4)
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating == 4)
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating > 4 && $wo->rating <5)
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @elseif($wo->rating == 5)
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <br>
+                                            <i>{{$wo->rating}}</i>
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="product-action v2">
-                            <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                            <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                            <a href="#" class="btn-switch" title="Compare"><i class="fa fa-eye"></i></a>
-                        </div>
-                        <div class="product-info v2">
-                            <h3 class="product-title"><a href="/informasi_perusahaan">Brid in the Cage 299pln</a></h3>
-                            <div class="product-price hidden-md hidden-lg">
-                                <p class="price-n">$58.00</p>
+                        <div class="product-info v2 text-center">
+                            <h3 class="product-title"><a href="/informasi_perusahaan/{{$wo->id}}">Brid in the Cage 299pln</a></h3>
+                            <div class="product-price">
+                                <p class="price-n"><i class="fa fa-map-marker"></i> {{$wo->alamat}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product-item">
-                        <div class="product-img v2">
-                            <a class="hover-images" href="#"><img src="/asset/img/products/pd_2.jpg" alt="" class="img-reponsive"></a>
-                            <div class="overlay-img box-content-center hover-price">
-                                <div class="product-price inovl">
-                                    <p class="price-n">$58.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-action v2">
-                            <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                            <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                            <a href="#" class="btn-switch" title="Compare"><i class="fa fa-eye"></i></a>
-                        </div>
-                        <div class="product-info v2">
-                            <h3 class="product-title"><a href="/informasi_perusahaan">Madeline bride</a></h3>
-                            <div class="product-price hidden-md hidden-lg">
-                                <p class="price-n">$58.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product-item">
-                        <div class="product-img v2">
-                            <a class="hover-images" href="#"><img src="/asset/img/products/pd_3.jpg" alt="" class="img-reponsive"></a>
-                            <div class="overlay-img box-content-center hover-price">
-                                <div class="product-price inovl">
-                                    <p class="price-n">$58.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-action v2">
-                            <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                            <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                            <a href="#" class="btn-switch" title="Compare"><i class="fa fa-eye"></i></a>
-                        </div>
-                        <div class="product-info v2">
-                            <h3 class="product-title"><a href="/informasi_perusahaan">Beaded Flower Headband</a></h3>
-                            <div class="product-price hidden-md hidden-lg">
-                                <p class="price-n">$58.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product-item">
-                        <div class="product-img v2">
-                            <a class="hover-images" href="#"><img src="/asset/img/products/pd_4.jpg" alt="" class="img-reponsive"></a>
-                            <div class="overlay-img box-content-center hover-price">
-                                <div class="product-price inovl">
-                                    <p class="price-n">$58.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-action v2">
-                            <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                            <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                            <a href="#" class="btn-switch" title="Compare"><i class="fa fa-eye"></i></a>
-                        </div>
-                        <div class="product-info v2">
-                            <h3 class="product-title"><a href="/informasi_perusahaan">Bridal Maxi Skirt in Tulle</a></h3>
-                            <div class="product-price hidden-md hidden-lg">
-                                <p class="price-n">$58.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product-item">
-                        <div class="product-img v2">
-                            <a class="hover-images" href="#"><img src="/asset/img/products/pd_5.jpg" alt="" class="img-reponsive"></a>
-                            <div class="overlay-img box-content-center hover-price">
-                                <div class="product-price inovl">
-                                    <p class="price-n">$58.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-action v2">
-                            <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                            <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                            <a href="#" class="btn-switch" title="Compare"><i class="fa fa-eye"></i></a>
-                        </div>
-                        <div class="product-info v2">
-                            <h3 class="product-title"><a href="/informasi_perusahaan">Jewelled Box Clutch Bag</a></h3>
-                            <div class="product-price hidden-md hidden-lg">
-                                <p class="price-n">$58.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product-item">
-                        <div class="product-img v2">
-                            <a class="hover-images" href="#"><img src="/asset/img/products/pd_6.jpg" alt="" class="img-reponsive"></a>
-                            <div class="overlay-img box-content-center hover-price">
-                                <div class="product-price inovl">
-                                    <p class="price-n">$58.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-action v2">
-                            <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                            <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                            <a href="#" class="btn-switch" title="Compare"><i class="fa fa-eye"></i></a>
-                        </div>
-                        <div class="product-info v2">
-                            <h3 class="product-title"><a href="/informasi_perusahaan">Becca Lace Strappy Underwire Bra</a></h3>
-                            <div class="product-price hidden-md hidden-lg">
-                                <p class="price-n">$58.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product-item">
-                        <div class="product-img v2">
-                            <a class="hover-images" href="#"><img src="/asset/img/products/pd_7.jpg" alt="" class="img-reponsive"></a>
-                            <div class="overlay-img box-content-center hover-price">
-                                <div class="product-price inovl">
-                                    <p class="price-n">$58.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-action v2">
-                            <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                            <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                            <a href="#" class="btn-switch" title="Compare"><i class="fa fa-eye"></i></a>
-                        </div>
-                        <div class="product-info v2">
-                            <h3 class="product-title"><a href="/informasi_perusahaan">Becca Lace Thong</a></h3>
-                            <div class="product-price hidden-md hidden-lg">
-                                <p class="price-n">$58.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product-item">
-                        <div class="product-img v2">
-                            <a class="hover-images" href="#"><img src="/asset/img/products/pd_8.jpg" alt="" class="img-reponsive"></a>
-                            <div class="overlay-img box-content-center hover-price">
-                                <div class="product-price inovl">
-                                    <p class="price-n">$58.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-action v2">
-                            <a href="#" class="btn-cart" title="Add to cart"><i class="icon-bag"></i></a>
-                            <a href="#" class="btn-wishlist" title="Wishlist"><i class="icon-heart"></i></a>
-                            <a href="#" class="btn-switch" title="Compare"><i class="fa fa-eye"></i></a>
-                        </div>
-                        <div class="product-info v2">
-                            <h3 class="product-title"><a href="/informasi_perusahaan">Olivia The Wolf Lace Hair Comb</a></h3>
-                            <div class="product-price hidden-md hidden-lg">
-                                <p class="price-n">$58.00</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -346,6 +270,22 @@
     <script src="/asset/js/owl.carousel.min.js"></script>
     <script src="/asset/js/slick.min.js"></script>
     <script src="/asset/js/main.js"></script>
+    
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+      @if(Session::has('message'))
+        var type="{{Session::get('alert-type','success')}}"
+      
+        switch(type){
+          case 'success':
+           toastr.info("{{ Session::get('message') }}");
+           break;
+        case 'error':
+          toastr.error("{{ Session::get('message') }}");
+          break;
+        }
+      @endif
+    </script>
 </body>
 
 </html>
